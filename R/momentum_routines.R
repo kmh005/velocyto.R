@@ -1123,6 +1123,8 @@ show.velocity.on.embedding.cor <- function(emb,vel,n=100,cell.colors=NULL, corr.
     cat("calculating arrows ... ")
     arsd <- data.frame(t(embArrows(emb,tp,arrow.scale,n.cores)))
     rownames(arsd) <- rownames(emb);
+    #hotfix_arsd
+    arsd <- na.omit(arsd);
     
     if(expression.scaling) {
       tpb <- tp>0; tpb <- t(t(tpb)/colSums(tpb));
@@ -1141,6 +1143,8 @@ show.velocity.on.embedding.cor <- function(emb,vel,n=100,cell.colors=NULL, corr.
     colnames(ars) <- c('x0','y0','x1','y1')
     colnames(arsd) <- c('xd','yd')
     rownames(ars) <- rownames(emb);
+    #hotfix_ars
+    ars <- na.omit(ars);
     cat("done\n")
     
     
